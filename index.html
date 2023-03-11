@@ -3,7 +3,8 @@
     <head>
     <link href="https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={585f64e0a63a1964d8bafef222a8e541}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    </head>
+    <link href="./assets/css/style.css" rel="stylesheet" />
+</head>
     <body>
         <!-- Nav Bar -->
         <nav class="navbar bg-body-tertiary">
@@ -21,7 +22,7 @@
                     <div class="card-body">
                         <label for="formGroupExampleInput" class="form-label">Search for your City:</label>
                         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="City Name">
-                        <button type="button" class="btn btn-info">Search</button>
+                        <button type="button" class="btn btn-primary">Search</button>
                     </div>
                 </div>
             
@@ -42,7 +43,7 @@
             <div class="row col-md-9 col-lg-9">
                 <!-- City Display -->
                 <!-- TO DO: display information for selected city -->
-                <div class="card mb-3" style="width: 100%;">
+                <div class="card text-bg-info mb-3" style="width: 100%;">
                     <div class="card-body">
                         <h5 class="card-title">City Name</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Current Date</h6>
@@ -52,11 +53,15 @@
                     </div>
                 </div>
             
-
-                <h4 class="card-title">5 Day Forcast</h5>
+                <div class="card text-bg-light col-2 mb-3" style="width: 100%;">
+                    <div class="card-body">
+                        <h4 class="card-title">5 Day Forecast</h5>
+                    </div>
+                </div>
+                
 
                 <!-- TO DO: display information for selected city -->
-                <div class="card col-2" style="width: 20%;">
+                <div class="card text-bg-success col-2 forecast" style="width: 20%;">
                     <div class="card-body">
                         <h5 class="card-title">Day 1</h5>
                         <!-- insert icon for weather forcast for that day -->
@@ -66,7 +71,7 @@
                     </div>
                 </div>
                 <!-- TO DO: display information for selected city -->
-                <div class="card col-2" style="width: 20%;">
+                <div class="card text-bg-success col-2 forecast" style="width: 20%;">
                     <div class="card-body">
                         <h5 class="card-title">Day 2</h5>
                         <!-- insert icon for weather forcast for that day -->
@@ -76,7 +81,7 @@
                     </div>
                 </div>
                 <!-- TO DO: display information for selected city -->
-                <div class="card col-2" style="width: 20%;">
+                <div class="card text-bg-success col-2 forecast" style="width: 20%;">
                     <div class="card-body">
                         <h5 class="card-title">Day 3</h5>
                         <!-- insert icon for weather forcast for that day -->
@@ -86,7 +91,7 @@
                     </div>
                 </div>
                 <!-- TO DO: display information for selected city -->
-                <div class="card col-2" style="width: 20%;">
+                <div class="card text-bg-success col-2 forecast" style="width: 20%;">
                     <div class="card-body">
                         <h5 class="card-title">Day 4</h5>
                         <!-- insert icon for weather forcast for that day -->
@@ -96,7 +101,7 @@
                     </div>
                 </div>
                 <!-- TO DO: display information for selected city -->
-                <div class="card col-2" style="width: 20%;">
+                <div class="card text-bg-success col-2 forecast" style="width: 20%;">
                     <div class="card-body">
                         <h5 class="card-title">Day 5</h5>
                         <!-- insert icon for weather forcast for that day -->
