@@ -1,12 +1,14 @@
+// Event listener for search button
 var searchButton = document.getElementById("searchBtn");
-var cityInput = document.getElementById("cityInput").value;
-
 searchButton.addEventListener("click", storeCitySearch);
-console.log(cityInput);
 
+
+// Gets user input and saves to local storage, calls next function
 function storeCitySearch() {
+    var cityInput = document.getElementById("cityInput").value;
     localStorage.setItem("city", cityInput);
-    getCityCoordinates;
+    console.log(cityInput);
+    getCityCoordinates();
 }
 
 function getCityCoordinates() {
@@ -17,21 +19,23 @@ function getCityCoordinates() {
         return response.json();
     })
     .then (function(data) {
-        console.log(cityInput)
-        getFiveDayForecast;
+    //    get lat and lon from data
+
+        getFiveDayForecast();
+        
     });
 }
 
 
 function getFiveDayForecast() {
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=585f64e0a63a1964d8bafef222a8e541';
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=585f64e0a63a1964d8bafef222a8e541';
 
     fetch(requestUrl)
     .then(function (response) {
         return response.json();
     })
     .then(function(data) {
-        console.log(cityInput)
+        
     });
 
 
