@@ -49,25 +49,59 @@ function getFiveDayForecast(requestUrl) {
         var cityName = document.getElementById('cityName');
         cityName.innerHTML = data.city.name + ', ' + data.city.country;
 
-        
+        var fiveDayEl = document.getElementById('5-day');
+        var day1 = document.getElementById('day1');
+        var day2 = document.getElementById('day2');
+        var day3 = document.getElementById('day3');
+        var day4 = document.getElementById('day4');
+        var day5 = document.getElementById('day5');
+
         for (var i = 0; i < 5; i++) {
             console.log("Day " + (i+1) + ' Temp: ' + data.list[i].main.temp);
             console.log("Day " + (i+1) + ' Wind: ' + data.list[i].wind.speed);
             console.log("Day " + (i+1) + ' Humidity: ' + data.list[i].main.humidity);
             console.log("Day " + (i+1) + " Weather: " + JSON.stringify(data.list[i].weather));
-
+        
           //   append results to page
-          var fiveDayEl = document.getElementById('5-day');
-          fiveDayForecast = ''
-          fiveDayForecast.innerHTML = 
-          '<div class="card text-bg-success col-2 forecast" style="width: 20%;">' + 
+            day1.innerHTML =   '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
+            '<div class="card-body">' +
+                '<h5 class="card-title">' + 'Day 1: ' + '</h5>' +
+                '<p class="card-text">' + 'Temp: ' + data.list[0].main.temp + '</p>' +
+                '<p class="card-text">' + 'Wind: ' + data.list[0].wind.speed + '</p>' +
+                '<p class="card-text">' + 'Humidity: ' + data.list[0].main.humidity + '</p>' +
+            '</div>' + '</div>';
+          day2.innerHTML = 
+          '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
           '<div class="card-body">' +
-              '<h5 class="card-title">' + 'Day ' + i + ': ' + '</h5>' +
-              '<p class="card-text">' + 'Temp: ' + data.list[i].main.temp + '</p>' +
-              '<p class="card-text">' + 'Wind: ' + data.list[i].wind.speed + '</p>' +
-              '<p class="card-text">' + 'Humidity: ' + data.list[i].main.humidity + '</p>' +
+              '<h5 class="card-title">' + 'Day 2: ' + '</h5>' +
+              '<p class="card-text">' + 'Temp: ' + data.list[1].main.temp + '</p>' +
+              '<p class="card-text">' + 'Wind: ' + data.list[1].wind.speed + '</p>' +
+              '<p class="card-text">' + 'Humidity: ' + data.list[1].main.humidity + '</p>' +
           '</div>' + '</div>';
-          fiveDayEl.append(fiveDayForecast.innerHTML);
+          day3.innerHTML = 
+          '<div class="card text-bg-success col-2 forecast " style="width:20%">' + 
+          '<div class="card-body">' +
+              '<h5 class="card-title">' + 'Day 3: ' + '</h5>' +
+              '<p class="card-text">' + 'Temp: ' + data.list[2].main.temp + '</p>' +
+              '<p class="card-text">' + 'Wind: ' + data.list[2].wind.speed + '</p>' +
+              '<p class="card-text">' + 'Humidity: ' + data.list[2].main.humidity + '</p>' +
+          '</div>' + '</div>';
+          day4.innerHTML = 
+          '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
+          '<div class="card-body">' +
+              '<h5 class="card-title">' + 'Day 4: ' + '</h5>' +
+              '<p class="card-text">' + 'Temp: ' + data.list[3].main.temp + '</p>' +
+              '<p class="card-text">' + 'Wind: ' + data.list[3].wind.speed + '</p>' +
+              '<p class="card-text">' + 'Humidity: ' + data.list[3].main.humidity + '</p>' +
+          '</div>' + '</div>';
+          day5.innerHTML = 
+          '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
+          '<div class="card-body">' +
+              '<h5 class="card-title">' + 'Day 5: ' + '</h5>' +
+              '<p class="card-text">' + 'Temp: ' + data.list[4].main.temp + '</p>' +
+              '<p class="card-text">' + 'Wind: ' + data.list[4].wind.speed + '</p>' +
+              '<p class="card-text">' + 'Humidity: ' + data.list[4].main.humidity + '</p>' +
+          '</div>' + '</div>';
         }
     });
 
