@@ -45,10 +45,26 @@ function getCurrentWeather(currentUrl) {
         return response.json();
     })
     .then(function(data) {
+        var today = document.getElementById('today');
         console.log(data.weather);
         console.log('Temp today: ' + data.main.temp);
         console.log('Humidity today: ' + data.main.humidity);
         console.log('Wind Speed today: ' + data.wind.speed);
+
+        today.innerHTML = 
+        '<div class="card-body">' +
+            // City Name
+            '<h5 class="card-title" id="cityName">' + data.name + ', ' + data.sys.country + '</h5>' +
+            // Today's Date
+            '<h6 class="card-subtitle mb-2 text-muted">' + 'Current Date' + '</h6>' +
+            // TO DO: Weather Image
+            // Temp
+            '<p class="card-text">' + 'Temp: ' + data.main.temp + '</p>' +
+            // Wind Speed
+            '<p class="card-text">' + 'Wind: ' + data.wind.speed + '</p>' +
+            // Humidity
+            '<p class="card-text">' + 'Humidity: ' + data.main.humidity + '</p>' +
+        '</div>';
     })
 }
 
@@ -60,11 +76,6 @@ function getFiveDayForecast(forecastUrl) {
         return response.json();
     })
     .then(function(data) {
-        console.log(data);
-        console.log(data.city.name + ', ' + data.city.country);
-        var cityName = document.getElementById('cityName');
-        cityName.innerHTML = data.city.name + ', ' + data.city.country;
-
         // selects page elements
         var day1 = document.getElementById('day1');
         var day2 = document.getElementById('day2');
@@ -80,7 +91,8 @@ function getFiveDayForecast(forecastUrl) {
             console.log("Day " + (i+1) + " Weather: " + JSON.stringify(data.list[i].weather));
         }
         //   append results to page
-        day1.innerHTML =   '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
+        day1.innerHTML =   
+        '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 1: ' + '</h5>' +
             '<p class="card-text">' + 'Temp: ' + data.list[0].main.temp + '</p>' +
