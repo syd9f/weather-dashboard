@@ -30,7 +30,7 @@ function getCityCoordinates() {
         console.log(cityLat);
         console.log(cityLon);
 
-        var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + cityLat + '&lon=' + cityLon + '&appid=585f64e0a63a1964d8bafef222a8e541';
+        var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + cityLat + '&lon=' + cityLon + '&appid=585f64e0a63a1964d8bafef222a8e541&units=imperial';
         getFiveDayForecast(requestUrl);
         
     });
@@ -45,11 +45,16 @@ function getFiveDayForecast(requestUrl) {
     })
     .then(function(data) {
         console.log(data);
+        console.log(data.city.name + ', ' + data.city.country);
+        var cityName = document.getElementById('cityName');
+        cityName.innerHTML = data.city.name + ', ' + data.city.country;
+
         
         for (var i = 0; i < 5; i++) {
-            console.log("Day" + i + 'Temp: ' + data.list[i].main.temp);
-            console.log("Day" + i + 'Wind: ' + data.list[i].wind.speed);
-            console.log("Day" + i + 'Humidity: ' + data.list[i].main.humidity);
+            console.log("Day " + (i+1) + ' Temp: ' + data.list[i].main.temp);
+            console.log("Day " + (i+1) + ' Wind: ' + data.list[i].wind.speed);
+            console.log("Day " + (i+1) + ' Humidity: ' + data.list[i].main.humidity);
+            console.log("Day " + (i+1) + " Weather: " + JSON.stringify(data.list[i].weather));
 
           //   append results to page
           var fiveDayEl = document.getElementById('5-day');
@@ -61,8 +66,8 @@ function getFiveDayForecast(requestUrl) {
               '<p class="card-text">' + 'Temp: ' + data.list[i].main.temp + '</p>' +
               '<p class="card-text">' + 'Wind: ' + data.list[i].wind.speed + '</p>' +
               '<p class="card-text">' + 'Humidity: ' + data.list[i].main.humidity + '</p>' +
-          '</div>' + '</div>'
-          fiveDayEl.append(fiveDayForecast);
+          '</div>' + '</div>';
+          fiveDayEl.append(fiveDayForecast.innerHTML);
         }
     });
 
