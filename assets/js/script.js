@@ -44,15 +44,16 @@ function getCurrentWeather(currentUrl) {
         return response.json();
     })
     .then(function(data) {
-        var today = document.getElementById('today');
-        console.log('BROKEN: Weather Icon ID: ' + data.weather.icon);
-        console.log('BROKEN: Weather Descr.: ' + data.weather.description);
         console.log('Temp today(F): ' + data.main.temp);
         console.log('Humidity today: ' + data.main.humidity);
         console.log('Wind Speed today: ' + data.wind.speed);
-        console.log('Weather today: ' + JSON.stringify(data.weather));
-        
+        // Display icon for today's weather
+        var weatherToday = JSON.stringify(data.weather);
+        console.log('Weather today: ' + weatherToday);
+        console.log('BROKEN: Weather Icon ID: ' + data.weather.icon);
+        console.log('BROKEN: Weather Descr.: ' + data.weather[0]);
 
+        var today = document.getElementById('today');
         today.innerHTML = 
         '<div class="card-body">' +
             // City Name
@@ -60,7 +61,7 @@ function getCurrentWeather(currentUrl) {
             // Today's Date
             '<h6 class="card-subtitle mb-2 text-muted">' + 'Current Date' + '</h6>' +
             // TO DO: Weather Image
-            // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">';
+            '<img src="https://openweathermap.org/img/wn/' +  + '@2x.png" alt="' + data.weather.description + '">' +
             // Temp
             '<p class="card-text">' + 'Temp: ' + data.main.temp + '</p>' +
             // Wind Speed
@@ -97,36 +98,61 @@ function getFiveDayForecast(forecastUrl) {
         day1.innerHTML =
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 1: ' + '</h5>' +
+            // To Do: add icon and desc from weather
+            //  '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.list[0].weather.description + '">' +
+            // Day 1 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[0].main.temp + '</p>' +
+            // Day 1 Wind Speed
             '<p class="card-text">' + 'Wind: ' + data.list[0].wind.speed + '</p>' +
+            // Day 1 Humidity
             '<p class="card-text">' + 'Humidity: ' + data.list[0].main.humidity + '</p>' +
         '</div>';
         day2.innerHTML = 
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 2: ' + '</h5>' +
+            // To Do: add icon and desc from weather
+             // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">' +
+            //  Day 2 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[1].main.temp + '</p>' +
+            // Day 2 Wind Speed
             '<p class="card-text">' + 'Wind: ' + data.list[1].wind.speed + '</p>' +
+            // Day 2 Humidity
             '<p class="card-text">' + 'Humidity: ' + data.list[1].main.humidity + '</p>' +
         '</div>';
         day3.innerHTML = 
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 3: ' + '</h5>' +
+            // To Do: add icon and desc from weather
+             // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">' +
+            //  Day 3 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[2].main.temp + '</p>' +
+            // Day 3 Wind Speed
             '<p class="card-text">' + 'Wind: ' + data.list[2].wind.speed + '</p>' +
+            // Day 3 Humidity
             '<p class="card-text">' + 'Humidity: ' + data.list[2].main.humidity + '</p>' +
         '</div>';
         day4.innerHTML =  
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 4: ' + '</h5>' +
+            // To Do: add icon and desc from weather
+             // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">' +
+            //  Day 4 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[3].main.temp + '</p>' +
+            // Day 4 Wind Speed
             '<p class="card-text">' + 'Wind: ' + data.list[3].wind.speed + '</p>' +
+            // Day 4 Humidity
             '<p class="card-text">' + 'Humidity: ' + data.list[3].main.humidity + '</p>' +
         '</div>';
         day5.innerHTML =  
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 5: ' + '</h5>' +
+            // To Do: add icon and desc from weather
+             // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">' +
+            //  Day 5 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[4].main.temp + '</p>' +
+            // Day 5 Wind Speed
             '<p class="card-text">' + 'Wind: ' + data.list[4].wind.speed + '</p>' +
+            // Day 5 Humidity
             '<p class="card-text">' + 'Humidity: ' + data.list[4].main.humidity + '</p>' +
         '</div>';
     });
