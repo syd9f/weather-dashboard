@@ -7,8 +7,7 @@ function storeCitySearch() {
     var cityInput = document.getElementById("cityInput").value;
     localStorage.setItem("citySearchHistory", cityInput);
 
-    console.log(cityInput);
-
+    // Call function to get coordinates 
     getCityCoordinates();
 }
 
@@ -21,20 +20,20 @@ function getCityCoordinates() {
         return response.json();
     })
     .then (function(data) {
-        console.log(data);
-        
     //    get lat and lon from data
         var cityLat = data[0].lat;
         var cityLon = data[0].lon;
 
-        console.log(cityLat);
-        console.log(cityLon);
+        console.log('City Lat: ' + cityLat);
+        console.log('City Lon: ' + cityLon);
 
-        var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + cityLat + '&lon=' + cityLon + '&appid=585f64e0a63a1964d8bafef222a8e541&units=imperial';
-        getFiveDayForecast(forecastUrl);
-
+        // call Current Weather function
         var currentUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + cityLat + '&lon='  + cityLon + '&appid=585f64e0a63a1964d8bafef222a8e541&units=imperial';
         getCurrentWeather(currentUrl);
+
+        // call Five Day Forecast function
+        var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + cityLat + '&lon=' + cityLon + '&appid=585f64e0a63a1964d8bafef222a8e541&units=imperial';
+        getFiveDayForecast(forecastUrl);
     });
 }
 
@@ -46,10 +45,13 @@ function getCurrentWeather(currentUrl) {
     })
     .then(function(data) {
         var today = document.getElementById('today');
-        console.log(data.weather);
-        console.log('Temp today: ' + data.main.temp);
+        console.log('BROKEN: Weather Icon ID: ' + data.weather.icon);
+        console.log('BROKEN: Weather Descr.: ' + data.weather.description);
+        console.log('Temp today(F): ' + data.main.temp);
         console.log('Humidity today: ' + data.main.humidity);
         console.log('Wind Speed today: ' + data.wind.speed);
+        console.log('Weather today: ' + JSON.stringify(data.weather));
+        
 
         today.innerHTML = 
         '<div class="card-body">' +
@@ -58,6 +60,7 @@ function getCurrentWeather(currentUrl) {
             // Today's Date
             '<h6 class="card-subtitle mb-2 text-muted">' + 'Current Date' + '</h6>' +
             // TO DO: Weather Image
+            // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">';
             // Temp
             '<p class="card-text">' + 'Temp: ' + data.main.temp + '</p>' +
             // Wind Speed
@@ -91,46 +94,41 @@ function getFiveDayForecast(forecastUrl) {
             console.log("Day " + (i+1) + " Weather: " + JSON.stringify(data.list[i].weather));
         }
         //   append results to page
-        day1.innerHTML =   
-        '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
+        day1.innerHTML =
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 1: ' + '</h5>' +
             '<p class="card-text">' + 'Temp: ' + data.list[0].main.temp + '</p>' +
             '<p class="card-text">' + 'Wind: ' + data.list[0].wind.speed + '</p>' +
             '<p class="card-text">' + 'Humidity: ' + data.list[0].main.humidity + '</p>' +
-        '</div>' + '</div>';
+        '</div>';
         day2.innerHTML = 
-        '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 2: ' + '</h5>' +
             '<p class="card-text">' + 'Temp: ' + data.list[1].main.temp + '</p>' +
             '<p class="card-text">' + 'Wind: ' + data.list[1].wind.speed + '</p>' +
             '<p class="card-text">' + 'Humidity: ' + data.list[1].main.humidity + '</p>' +
-        '</div>' + '</div>';
+        '</div>';
         day3.innerHTML = 
-        '<div class="card text-bg-success col-2 forecast " style="width:20%">' + 
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 3: ' + '</h5>' +
             '<p class="card-text">' + 'Temp: ' + data.list[2].main.temp + '</p>' +
             '<p class="card-text">' + 'Wind: ' + data.list[2].wind.speed + '</p>' +
             '<p class="card-text">' + 'Humidity: ' + data.list[2].main.humidity + '</p>' +
-        '</div>' + '</div>';
-        day4.innerHTML = 
-        '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
+        '</div>';
+        day4.innerHTML =  
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 4: ' + '</h5>' +
             '<p class="card-text">' + 'Temp: ' + data.list[3].main.temp + '</p>' +
             '<p class="card-text">' + 'Wind: ' + data.list[3].wind.speed + '</p>' +
             '<p class="card-text">' + 'Humidity: ' + data.list[3].main.humidity + '</p>' +
-        '</div>' + '</div>';
-        day5.innerHTML = 
-        '<div class="card text-bg-success col-2 forecast" style="width:20%">' + 
+        '</div>';
+        day5.innerHTML =  
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 5: ' + '</h5>' +
             '<p class="card-text">' + 'Temp: ' + data.list[4].main.temp + '</p>' +
             '<p class="card-text">' + 'Wind: ' + data.list[4].wind.speed + '</p>' +
             '<p class="card-text">' + 'Humidity: ' + data.list[4].main.humidity + '</p>' +
-        '</div>' + '</div>';
+        '</div>';
     });
 
 }
