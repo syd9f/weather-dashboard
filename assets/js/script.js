@@ -47,11 +47,8 @@ function getCurrentWeather(currentUrl) {
         console.log('Temp today(F): ' + data.main.temp);
         console.log('Humidity today: ' + data.main.humidity);
         console.log('Wind Speed today: ' + data.wind.speed);
-        // Display icon for today's weather
-        var weatherToday = JSON.stringify(data.weather);
-        console.log('Weather today: ' + weatherToday);
-        console.log('BROKEN: Weather Icon ID: ' + data.weather.icon);
-        console.log('BROKEN: Weather Descr.: ' + data.weather[0]);
+        console.log('Weather Icon ID: ' + data.weather[0].icon);
+        console.log('Weather Descr.: ' + data.weather[0].description);
 
         var today = document.getElementById('today');
         today.innerHTML = 
@@ -61,7 +58,7 @@ function getCurrentWeather(currentUrl) {
             // Today's Date
             '<h6 class="card-subtitle mb-2 text-muted">' + 'Current Date' + '</h6>' +
             // TO DO: Weather Image
-            '<img src="https://openweathermap.org/img/wn/' +  + '@2x.png" alt="' + data.weather.description + '">' +
+            '<img src="https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png" alt="' + data.weather[0].description + '">' +
             // Temp
             '<p class="card-text">' + 'Temp: ' + data.main.temp + '</p>' +
             // Wind Speed
@@ -94,6 +91,7 @@ function getFiveDayForecast(forecastUrl) {
             console.log("Day " + (i+1) + ' Humidity: ' + data.list[i].main.humidity);
             console.log("Day " + (i+1) + " Weather: " + JSON.stringify(data.list[i].weather));
         }
+        
         //   append results to page
         day1.innerHTML =
         '<div class="card-body">' +
