@@ -97,7 +97,7 @@ function getFiveDayForecast(forecastUrl) {
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 1: ' + '</h5>' +
             // To Do: add icon and desc from weather
-            //  '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.list[0].weather.description + '">' +
+             '<img src="https://openweathermap.org/img/wn/' + data.list[0].weather[0].icon + '@2x.png" alt="' + data.list[0].weather[0].description + '">' +
             // Day 1 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[0].main.temp + '</p>' +
             // Day 1 Wind Speed
@@ -109,7 +109,7 @@ function getFiveDayForecast(forecastUrl) {
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 2: ' + '</h5>' +
             // To Do: add icon and desc from weather
-             // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">' +
+             '<img src="https://openweathermap.org/img/wn/' + data.list[1].weather[0].icon + '@2x.png" alt="' + data.list[1].weather[0].description + '">' +
             //  Day 2 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[1].main.temp + '</p>' +
             // Day 2 Wind Speed
@@ -121,7 +121,7 @@ function getFiveDayForecast(forecastUrl) {
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 3: ' + '</h5>' +
             // To Do: add icon and desc from weather
-             // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">' +
+             '<img src="https://openweathermap.org/img/wn/' + data.list[2].weather[0].icon + '@2x.png" alt="' + data.list[2].weather[0].description + '">' +
             //  Day 3 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[2].main.temp + '</p>' +
             // Day 3 Wind Speed
@@ -133,7 +133,7 @@ function getFiveDayForecast(forecastUrl) {
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 4: ' + '</h5>' +
             // To Do: add icon and desc from weather
-             // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">' +
+             '<img src="https://openweathermap.org/img/wn/' + data.list[3].weather[0].icon + '@2x.png" alt="' + data.list[3].weather[0].description + '">' +
             //  Day 4 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[3].main.temp + '</p>' +
             // Day 4 Wind Speed
@@ -145,7 +145,7 @@ function getFiveDayForecast(forecastUrl) {
         '<div class="card-body">' +
             '<h5 class="card-title">' + 'Day 5: ' + '</h5>' +
             // To Do: add icon and desc from weather
-             // '<img src="https://openweathermap.org/img/wn/' + data.weather.icon + '@2x.png" alt="' + data.weather.description + '">' +
+             '<img src="https://openweathermap.org/img/wn/' + data.list[4].weather[0].icon + '@2x.png" alt="' + data.list[4].weather[0].description + '">' +
             //  Day 5 Temp
             '<p class="card-text">' + 'Temp: ' + data.list[4].main.temp + '</p>' +
             // Day 5 Wind Speed
