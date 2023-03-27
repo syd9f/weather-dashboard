@@ -1,3 +1,8 @@
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+const d = new Date();
+let day = weekday[d.getDay()];
+
 // Event listener for search button
 var searchButton = document.getElementById("searchBtn");
 searchButton.addEventListener("click", storeCitySearch);
@@ -56,7 +61,7 @@ function getCurrentWeather(currentUrl) {
             // City Name
             '<h5 class="card-title" id="cityName">' + data.name + ', ' + data.sys.country + '</h5>' +
             // Today's Date
-            '<h6 class="card-subtitle mb-2 text-muted">' + 'Current Date' + '</h6>' +
+            '<h6 class="card-subtitle mb-2 text-muted">' + day + '</h6>' +
             // TO DO: Weather Image
             '<img src="https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png" alt="' + data.weather[0].description + '">' +
             // Temp
@@ -91,11 +96,11 @@ function getFiveDayForecast(forecastUrl) {
             console.log("Day " + (i+1) + ' Humidity: ' + data.list[i].main.humidity);
             console.log("Day " + (i+1) + " Weather: " + JSON.stringify(data.list[i].weather));
         }
-        
+       
         //   append results to page
         day1.innerHTML =
         '<div class="card-body">' +
-            '<h5 class="card-title">' + 'Day 1: ' + '</h5>' +
+            '<h5 class="card-title">' + weekday[d.getDay() +1] + '</h5>' +
             // To Do: add icon and desc from weather
              '<img src="https://openweathermap.org/img/wn/' + data.list[0].weather[0].icon + '@2x.png" alt="' + data.list[0].weather[0].description + '">' +
             // Day 1 Temp
@@ -107,7 +112,7 @@ function getFiveDayForecast(forecastUrl) {
         '</div>';
         day2.innerHTML = 
         '<div class="card-body">' +
-            '<h5 class="card-title">' + 'Day 2: ' + '</h5>' +
+            '<h5 class="card-title">' + weekday[d.getDay() +2] + '</h5>' +
             // To Do: add icon and desc from weather
              '<img src="https://openweathermap.org/img/wn/' + data.list[1].weather[0].icon + '@2x.png" alt="' + data.list[1].weather[0].description + '">' +
             //  Day 2 Temp
@@ -119,7 +124,7 @@ function getFiveDayForecast(forecastUrl) {
         '</div>';
         day3.innerHTML = 
         '<div class="card-body">' +
-            '<h5 class="card-title">' + 'Day 3: ' + '</h5>' +
+            '<h5 class="card-title">' + weekday[d.getDay() +3] + '</h5>' +
             // To Do: add icon and desc from weather
              '<img src="https://openweathermap.org/img/wn/' + data.list[2].weather[0].icon + '@2x.png" alt="' + data.list[2].weather[0].description + '">' +
             //  Day 3 Temp
@@ -131,7 +136,7 @@ function getFiveDayForecast(forecastUrl) {
         '</div>';
         day4.innerHTML =  
         '<div class="card-body">' +
-            '<h5 class="card-title">' + 'Day 4: ' + '</h5>' +
+            '<h5 class="card-title">' + weekday[d.getDay() +4] + '</h5>' +
             // To Do: add icon and desc from weather
              '<img src="https://openweathermap.org/img/wn/' + data.list[3].weather[0].icon + '@2x.png" alt="' + data.list[3].weather[0].description + '">' +
             //  Day 4 Temp
@@ -143,7 +148,7 @@ function getFiveDayForecast(forecastUrl) {
         '</div>';
         day5.innerHTML =  
         '<div class="card-body">' +
-            '<h5 class="card-title">' + 'Day 5: ' + '</h5>' +
+            '<h5 class="card-title">' + weekday[d.getDay() +5] + '</h5>' +
             // To Do: add icon and desc from weather
              '<img src="https://openweathermap.org/img/wn/' + data.list[4].weather[0].icon + '@2x.png" alt="' + data.list[4].weather[0].description + '">' +
             //  Day 5 Temp

@@ -26,3 +26,4 @@ THEN I am again presented with current and future conditions for that city
 ## Usage
 
 ## Credits
+Code for getting the current day of week: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_date_weekday
