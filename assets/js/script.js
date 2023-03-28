@@ -1,4 +1,5 @@
-const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+// Declared days of week twice to make sure five day forecast does not show undefined
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 const d = new Date();
 let day = weekday[d.getDay()];
@@ -10,11 +11,21 @@ searchButton.addEventListener("click", storeCitySearch);
 // Gets user input and saves to local storage, calls next function to get coordinates
 function storeCitySearch() {
     var cityInput = document.getElementById("cityInput").value;
-    localStorage.setItem("citySearchHistory", cityInput);
+    var searchHistoryStorage = [cityInput,];
+    localStorage.setItem("citySearchHistory", JSON.stringify(searchHistoryStorage));
+
 
     // Call function to get coordinates 
     getCityCoordinates();
 }
+
+// TO DO: DISPLAY LINK OF PREVIOUS SEARCHES THAT WILL PULL UP THE WEATHER DATA FOR THAT CITY
+// function displaySearchHistory() {
+//     var searchUl = document.getElementById("history");
+//     searchUl.innerHTML = "<a>cityInput<a>";
+    
+//     var sea
+// }
 
 // takes user input and gets city coordinates for city, calls next functions to display weather data
 function getCityCoordinates() {
@@ -33,11 +44,11 @@ function getCityCoordinates() {
         console.log('City Lon: ' + cityLon);
 
         // call Current Weather function
-        var currentUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + cityLat + '&lon='  + cityLon + '&appid=585f64e0a63a1964d8bafef222a8e541&units=imperial';
+        var currentUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + cityLat + '&lon='  + cityLon + '&appid=585f64e0a63a1964d8bafef222a8e541&units=imperial&lang=en';
         getCurrentWeather(currentUrl);
 
         // call Five Day Forecast function
-        var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + cityLat + '&lon=' + cityLon + '&appid=585f64e0a63a1964d8bafef222a8e541&units=imperial';
+        var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + cityLat + '&lon=' + cityLon + '&appid=585f64e0a63a1964d8bafef222a8e541&units=imperial&lang=en';
         getFiveDayForecast(forecastUrl);
     });
 }
@@ -62,7 +73,7 @@ function getCurrentWeather(currentUrl) {
             '<h5 class="card-title" id="cityName">' + data.name + ', ' + data.sys.country + '</h5>' +
             // Today's Date
             '<h6 class="card-subtitle mb-2 text-muted">' + day + '</h6>' +
-            // TO DO: Weather Image
+            // Weather Image
             '<img src="https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png" alt="' + data.weather[0].description + '">' +
             // Temp
             '<p class="card-text">' + 'Temp: ' + data.main.temp + '</p>' +
