@@ -4,8 +4,14 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 const d = new Date();
 let day = weekday[d.getDay()];
 
+var searchUl = document.getElementById("history");
 var searchHistoryStorage = [];
 localStorage.getItem("citySearchHistory",JSON.stringify(searchHistoryStorage));
+    // loops through api results in console
+    for (var i = 0; i < 5; i++) {
+        searchUl.innerHTML = "<li class=list-group-item>" + localStorage.getItem("citySearchHistory", JSON.stringify(searchHistoryStorage[i])) + "</li>";
+    }
+
 // Event listener for search button
 var searchButton = document.getElementById("searchBtn");
 searchButton.addEventListener("click", storeCitySearch);
@@ -17,12 +23,12 @@ function storeCitySearch() {
     searchHistoryStorage.push(cityInput);
     localStorage.setItem("citySearchHistory", JSON.stringify(searchHistoryStorage));
 
-    var searchUl = document.getElementById("history");
-
-    // loops through api results in console
+        // loops through api results in console
     for (var i = 0; i < 5; i++) {
         searchUl.innerHTML = "<li class=list-group-item>" + localStorage.getItem("citySearchHistory", JSON.stringify(searchHistoryStorage[i])) + "</li>";
     }
+
+
    
     // searchUl.innerHTML = "<li class=list-group-item>" + localStorage.getItem("citySearchHistory", JSON.stringify(searchHistoryStorage[i])) + "</li>";
 
