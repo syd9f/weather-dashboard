@@ -4,13 +4,11 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 const d = new Date();
 let day = weekday[d.getDay()];
 
+var userInput = document.getElementById("cityInput").value;
+console.log(userInput);
 var searchUl = document.getElementById("history");
 var searchHistoryStorage = [];
 localStorage.getItem("citySearchHistory",JSON.stringify(searchHistoryStorage));
-    // loops through api results in console
-    for (var i = 0; i < 5; i++) {
-        searchUl.innerHTML = "<li class=list-group-item>" + localStorage.getItem("citySearchHistory", JSON.stringify(searchHistoryStorage[i])) + "</li>";
-    }
 
 // Event listener for search button
 var searchButton = document.getElementById("searchBtn");
@@ -18,12 +16,12 @@ searchButton.addEventListener("click", storeCitySearch);
 
 // Gets user input and saves to local storage, calls next function to get coordinates
 function storeCitySearch() {
-    var cityInput = document.getElementById("cityInput").value;
-    // var searchHistoryStorage = cityInput;
-    searchHistoryStorage.push(cityInput);
+    var userInput = document.getElementById("cityInput").value;
+    console.log(userInput);
+    searchHistoryStorage.unshift(userInput);
     localStorage.setItem("citySearchHistory", JSON.stringify(searchHistoryStorage));
 
-        // loops through api results in console
+        // adds to search history to page
     for (var i = 0; i < 5; i++) {
         searchUl.innerHTML = "<li class=list-group-item>" + localStorage.getItem("citySearchHistory", JSON.stringify(searchHistoryStorage[i])) + "</li>";
     }
