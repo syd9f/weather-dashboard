@@ -25,6 +25,8 @@ THEN I am again presented with current and future conditions for that city
 
 ## Usage
 
+Deployed Site:
+https://syd9f.github.io/weather-dashboard/
 
 When visiting the webpage, the user will see 
 ![Webpage Screenshot](./assets/images/index.png)
