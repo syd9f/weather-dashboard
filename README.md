@@ -25,5 +25,18 @@ THEN I am again presented with current and future conditions for that city
 
 ## Usage
 
+
+When visiting the webpage, the user will see 
+![Webpage Screenshot](./assets/images/index.png)
+
+After typing in a city, the page will display the current weather data for that city, along with a Five Day Forecast:
+![Webpage Screenshot](./assets/images/search.png)
+
+The user can continue to search for more cities, and the search history will appear on the page:
+![Webpage Screenshot](./assets/images/search-2.png)
+
+## Known Bugs
+Currently, the search history appears, but in an array and not as a link to the search. Sometimes, after a few searches, the page will not load a new search. 
+
 ## Credits
 Code for getting the current day of week: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_date_weekday
